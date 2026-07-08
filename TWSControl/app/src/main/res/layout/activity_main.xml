@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1a1a2e"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TWS Macro/Control"
+            android:textSize="16sp"
+            android:textColor="#e94560"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/tvMac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--:--:--:--:--:--"
+            android:textSize="10sp"
+            android:textColor="#8899aa"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L"
+                android:textColor="#e94560"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="6dp"/>
+            <TextView
+                android:id="@+id/tvBatteryL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N/A"
+                android:textColor="#e0e0e0"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="32dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R"
+                android:textColor="#e94560"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="6dp"/>
+            <TextView
+                android:id="@+id/tvBatteryR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N/A"
+                android:textColor="#e0e0e0"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disconnected"
+            android:textColor="#8899aa"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="CONNECT"
+            android:textSize="13sp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#e94560"
+            android:layout_marginBottom="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOISE CANCELLATION"
+            android:textColor="#90caf9"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+            <Button android:id="@+id/btnAncOn" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="ANC" android:autoSizeTextType="uniform" android:autoSizeMaxTextSize="12sp" android:autoSizeMinTextSize="8sp" android:textColor="#ffffff" android:backgroundTint="#e94560" android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btnTransparency" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Transparency" android:autoSizeTextType="uniform" android:autoSizeMaxTextSize="11sp" android:autoSizeMinTextSize="7sp" android:textColor="#ffffff" android:backgroundTint="#16213e" android:layout_marginHorizontal="4dp"/>
+            <Button android:id="@+id/btnAncOff" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Normal" android:autoSizeTextType="uniform" android:autoSizeMaxTextSize="12sp" android:autoSizeMinTextSize="8sp" android:textColor="#ffffff" android:backgroundTint="#16213e" android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="4dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="GAME" android:textColor="#90caf9" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:layout_marginBottom="4dp"/>
+                <Button android:id="@+id/btnGameToggle" android:layout_width="match_parent" android:layout_height="38dp" android:text="OFF" android:textSize="13sp" android:textColor="#ffffff" android:backgroundTint="#16213e"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="4dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="TOUCH" android:textColor="#90caf9" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:layout_marginBottom="4dp"/>
+                <Button android:id="@+id/btnTouchToggle" android:layout_width="match_parent" android:layout_height="38dp" android:text="OFF" android:textSize="13sp" android:textColor="#ffffff" android:backgroundTint="#16213e"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="EQ PRESETS" android:textColor="#90caf9" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.08" android:layout_marginBottom="6dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="3dp">
+            <Button android:id="@+id/btnEq1" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Classic" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnEq2" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Bass Boost" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginStart="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="3dp">
+            <Button android:id="@+id/btnEq3" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Bass Reduction" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnEq4" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Electronic" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginStart="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="3dp">
+            <Button android:id="@+id/btnEq5" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Popular" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnEq6" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Classical" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginStart="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="3dp">
+            <Button android:id="@+id/btnEq7" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Rock &amp; Roll" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnEq8" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Folk" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginStart="3dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="14dp">
+            <Button android:id="@+id/btnEq9" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Treble" android:textColor="#ffffff" android:backgroundTint="#16213e" android:textSize="12sp" android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnEq0" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:text="Custom" android:textColor="#ffffff" android:backgroundTint="#533483" android:textSize="12sp" android:layout_marginStart="3dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/customEqContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#222244"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CUSTOM EQ (dB)" android:textColor="#90caf9" android:textSize="10sp" android:textStyle="bold" android:gravity="center" android:layout_marginBottom="6dp"/>
+
+            <Button android:id="@+id/btnCustomSend" android:layout_width="match_parent" android:layout_height="34dp" android:text="Apply Custom EQ" android:textSize="11sp" android:textColor="#ffffff" android:backgroundTint="#e94560" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btnReset" android:layout_width="match_parent" android:layout_height="38dp" android:text="Reset Device" android:textSize="12sp" android:textColor="#ffffff" android:backgroundTint="#533483" android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Made with Free Time and Free Will by FoxLost"
+            android:textSize="9sp"
+            android:textColor="#556677"
+            android:gravity="end"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+</ScrollView>
