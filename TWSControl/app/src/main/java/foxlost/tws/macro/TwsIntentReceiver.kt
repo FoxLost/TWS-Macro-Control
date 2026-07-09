@@ -69,7 +69,13 @@ class TwsIntentReceiver : BroadcastReceiver() {
 
         Thread {
             val existing = SppController.instance
-            if (existing != null && existing.isConnected) {
+            val eqIdx = if (mode.startsWith("eq_")) EqData.PRESET_NAMES.indexOf(mode) else -1
+
+            if (eqIdx >= 0 && existing != null && existing.isConnected) {
+                // Use exact same method as MainActivity for EQ presets
+                existing.setEqPreset(eqIdx)
+                Log.d(TAG, "Sent $mode via setEqPreset() (${EqData.PRESETS[eqIdx].bands.size} bands)")
+            } else if (existing != null && existing.isConnected) {
                 for (pkt in packets) { existing.write(pkt); Thread.sleep(50) }
                 Log.d(TAG, "Sent $mode via singleton OK (${packets.size} packets)")
             } else {
