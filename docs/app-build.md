@@ -1,19 +1,21 @@
-# TWS Macro/Control — Build & Architecture
+# Build & Architecture
 
-## Build Command
+## Android App (TWS Macro/Control)
+
+### Build Command
 
 ```bash
-cmd.exe /c "set JAVA_HOME=C:\Program Files\Java\jdk-17&& set ANDROID_HOME=C:\Users\herla\AppData\Local\Android\Sdk&& cd /d C:\data data data data\TWS-Soundpeats\TWSControl&& gradlew.bat assembleDebug --no-daemon"
+cmd.exe /c "set JAVA_HOME=C:\Program Files\Java\jdk-17&& set ANDROID_HOME=%LOCALAPPDATA%\Android\Sdk&& cd /d TWSControl&& gradlew.bat assembleDebug --no-daemon"
 ```
 
-## App Architecture
+### Architecture
 
 ```
 foxlost.tws.macro/
 ├── SppController.kt
 │     SPP RFCOMM connect/disconnect
 │     GAIA packet builder
-│     EQ preset + custom EQ send
+│     EQ preset + custom EQ send (delegated from TwsIntentReceiver)
 │     Response reader/parser
 │     Callbacks: battery, game, touch, ANC, connection
 │     Singleton instance shared with TwsIntentReceiver
@@ -28,7 +30,7 @@ foxlost.tws.macro/
 │
 ├── TwsIntentReceiver.kt
 │     MacroDroid broadcast receiver
-│     Uses SppController singleton if app is open
+│     Uses SppController.setEqPreset() if app is open (singleton)
 │     Falls back to own SPP connection when app closed
 │     ANC, Game, Touch, EQ presets via EqData
 │
@@ -42,7 +44,7 @@ foxlost.tws.macro/
       receiver: TwsIntentReceiver (action: foxlost.tws.macro.SET_MODE)
 ```
 
-## Color Scheme
+### Color Scheme
 
 | State | Color | Hex |
 |-------|-------|-----|
@@ -50,20 +52,51 @@ foxlost.tws.macro/
 | Inactive/OFF | Dark blue | `#16213E` |
 | Connect button | Red | `#E94560` |
 | Reset/Custom | Purple | `#533483` |
+| Icon background | Warm cream | `#F5ECD5` |
 
-## Dependencies
-
-| Tool | Version | Path |
-|------|---------|------|
-| JDK | 17 | `C:\Program Files\Java\jdk-17` |
-| Android SDK | — | `C:\Users\herla\AppData\Local\Android\Sdk` |
-| ADB | — | `C:\Users\herla\platform-tools\adb.exe` |
-| Python | 3.14 | `C:\Python314\python.exe` |
-| Gradle | wrapper | `TWSControl\gradlew.bat` |
-| JADX | — | `jadx/bin/jadx.bat` |
-
-## APK
+### APK Output
 
 ```
 TWSControl/app/build/outputs/apk/debug/app-debug.apk
+```
+
+---
+
+## Windows App (TWSControlWin)
+
+### Build Commands
+
+```powershell
+# Debug build
+cd TWSControlWin
+dotnet build
+
+# Release .exe (self-contained, single file)
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o publish
+```
+
+### Architecture
+
+```
+TWSControlWin/
+├── TWSControlWin.csproj    .NET 8.0 WPF + InTheHand.Net.Bluetooth
+├── EqData.cs               EQ presets, GAIA packet builder (port dari EqData.kt)
+├── SppController.cs        SPP RFCOMM connect, command send, response parse (port dari SppController.kt)
+├── MainWindow.xaml         UI layout (port dari activity_main.xml)
+├── MainWindow.xaml.cs      Button handlers, state management (port dari MainActivity.kt)
+├── icon.ico                Ikon aplikasi
+└── App.xaml                Entry point
+```
+
+### Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| InTheHand.Net.Bluetooth | RFCOMM SPP Bluetooth for Windows (32feet.NET) |
+| .NET 8.0 | Runtime |
+
+### EXE Output
+
+```
+TWSControlWin/publish/TWSControlWin.exe  (~155 MB, self-contained)
 ```

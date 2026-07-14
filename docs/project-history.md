@@ -58,6 +58,33 @@
     - All inactive/OFF buttons: dark blue (`#16213E`)
     - Touch toggle color changed from red to dark blue when disabled
 
+13. **EQ Intent Fix**
+    - TwsIntentReceiver EQ intent was calling `existing.write()` directly, causing disconnect
+    - Fixed to delegate to `existing.setEqPreset()` — same method as MainActivity
+    - Both singleton path and own SPP path verified working
+
+14. **Hardcoded MAC Removed**
+    - `98:80:BB:40:5B:AF` removed from all source files
+    - Both SppController and TwsIntentReceiver use `findTwsDevice()` dynamic discovery
+    - Scans bonded devices by name (SOUNDPEATS, Air3, PEATS)
+
+15. **Adaptive Icon**
+    - Icon from `icon.ico` converted to adaptive icon (108x108 viewport)
+    - Foreground: 256x256 PNG in density-specific drawable folders
+    - Background: warm cream `#F5ECD5`
+
+16. **TWSControlWin (Windows Port)**
+    - Full C# WPF port with .NET 8.0 + 32feet.NET
+    - All features ported: ANC, Game, Touch, EQ, Battery, Reset
+    - Self-contained single-file .exe build
+    - Auto-discover bonded TWS devices
+
+17. **Firmware Extraction**
+    - Wrote `extract_firmware.py` for QCC3046 firmware analysis
+    - Firmware uses proprietary Qualcomm format (not gzip)
+    - Found QCC sections, CSR partition tables, GAIA strings, audio data
+    - Build info: 2020-08-14, auraplus_p0_d00_signed
+
 ## What Works
 
 - SPP RFCOMM connect/disconnect
@@ -72,6 +99,8 @@
 - Factory Reset with confirmation
 - MacroDroid intent: 17 commands via broadcast receiver
 - Intent works with app open (singleton) or closed (own SPP)
+- Adaptive icon
+- Windows app with full feature parity
 
 ## Notes
 
