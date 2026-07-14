@@ -4,6 +4,13 @@ Android app for controlling SoundPEATS Air3 Pro TWS earbuds with MacroDroid (or 
 
 **Package**: `foxlost.tws.macro`
 
+## Projects
+
+| Project | Platform | Path |
+|---------|----------|------|
+| **TWS Macro/Control** | Android | `TWSControl/` |
+| **TWSControlWin** | Windows | `TWSControlWin/` |
+
 ## Features
 
 - SPP RFCOMM connection to paired TWS device
@@ -85,6 +92,25 @@ See `docs/gaia-protocol.md` for full command table.
 
 ## Fork
 Just fork and make change that works with your devices, do what ever you want :)
+
+## Windows App (TWSControlWin)
+
+C# WPF application with full feature parity to the Android app.
+
+```powershell
+cd TWSControlWin
+dotnet build
+dotnet run
+```
+
+Requires: .NET 8.0 SDK, Windows with Bluetooth Classic support.
+
+Features:
+- Auto-discover paired TWS devices
+- ANC / Game / Touch toggle
+- 9 EQ presets + custom EQ sliders
+- Battery display
+- Factory reset
 
 ## License
 
